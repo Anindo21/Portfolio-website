@@ -1,0 +1,6 @@
+{
+  "name": "Rezaul Hoque Portfolio",
+  "description": "Interactive, bilingual personal portfolio of Rezaul Hoque, specializing in AI & Automation Engineering, DevOps, and cloud solutions.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
