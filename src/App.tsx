@@ -37,9 +37,31 @@ export default function App() {
     return 'dark';
   });
 
-  // Sync preference changes and initial state to localStorage
+  // Sync preference changes and initial state to localStorage + update SEO title/meta
   useEffect(() => {
     localStorage.setItem('language', language);
+    document.documentElement.lang = language;
+    
+    // Dynamic titles and descriptions tailored to current language
+    if (language === 'de') {
+      document.title = "Rezaul Hoque | KI-, Automatisierungs- & Produktstrategie-Portfolio";
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) {
+        metaDesc.setAttribute(
+          'content',
+          'Portfolio von Rezaul Hoque: KI- & Automatisierungs-Ingenieur, Produktmanager und Cloud-Spezialist in Düsseldorf. Spezialisiert auf Agentic AI, Copilot Studio, Azure und Datenstrategie.'
+        );
+      }
+    } else {
+      document.title = "Rezaul Hoque | AI, Automation & Product Strategy Portfolio";
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) {
+        metaDesc.setAttribute(
+          'content',
+          'Portfolio of Rezaul Hoque: AI & Automation Engineer, Product Manager, and Cloud Specialist in Düsseldorf, Germany. Specializing in Agentic AI, Copilot Studio, Azure, and Data Strategy.'
+        );
+      }
+    }
   }, [language]);
 
   // Set html element class for Tailwind dark mode

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
-import { BrainCircuit, Database, Code, Sparkles, ExternalLink, X, Award, Cpu, Shield, Terminal, Calculator, CheckSquare, Compass, GraduationCap } from 'lucide-react';
+import { BrainCircuit, Database, Code, Sparkles, ExternalLink, X, Award, Cpu, Shield, Terminal, Calculator, CheckSquare, Compass, GraduationCap, ChevronDown } from 'lucide-react';
 import { Language, ProjectItem } from '../types';
 import { projectsData } from '../data';
 
@@ -11,6 +11,13 @@ interface ProjectsProps {
 export default function Projects({ language }: ProjectsProps) {
   const [filter, setFilter] = useState<'all' | 'ai' | 'web' | 'java'>('all');
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
+
+  const handleSkipSection = () => {
+    const nextElem = document.getElementById('certificates');
+    if (nextElem) {
+      nextElem.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   const filterButtons = [
     { id: 'all', label: { en: 'All', de: 'Alle' } },
@@ -57,14 +64,26 @@ export default function Projects({ language }: ProjectsProps) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="mb-12"
+        className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4"
       >
-        <span className="text-[10px] uppercase tracking-[0.25em] text-sky-600 dark:text-sky-400 font-bold">
-          {language === 'en' ? '04 - PORTFOLIO' : '04 - PORTFOLIO'}
-        </span>
-        <h2 className="font-sans text-3xl md:text-4xl font-black uppercase tracking-tight text-slate-900 dark:text-white mt-1">
-          {language === 'en' ? 'SELECTED PROJECTS' : 'PROJEKTE'}
-        </h2>
+        <div>
+          <span className="text-[10px] uppercase tracking-[0.25em] text-sky-600 dark:text-sky-400 font-bold">
+            {language === 'en' ? '04 — PORTFOLIO' : '04 — PORTFOLIO'}
+          </span>
+          <h2 className="font-sans text-3xl md:text-4xl font-black uppercase tracking-tight text-slate-900 dark:text-white mt-1">
+            {language === 'en' ? 'SELECTED PROJECTS' : 'PROJEKTE'}
+          </h2>
+        </div>
+
+        {/* Skip Section Quick Action */}
+        <button
+          onClick={handleSkipSection}
+          className="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 hover:text-sky-600 dark:hover:text-sky-400 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg transition-all duration-300 cursor-pointer hover:border-sky-500/30 shrink-0 self-start md:self-auto"
+          title={language === 'en' ? 'Skip to Certificates section' : 'Zum Abschnitt Zertifikate springen'}
+        >
+          <span>{language === 'en' ? 'Skip Section' : 'Abschnitt überspringen'}</span>
+          <ChevronDown className="w-4 h-4 text-sky-500 animate-bounce" />
+        </button>
       </motion.div>
 
       {/* Filter Tabs */}
@@ -73,7 +92,7 @@ export default function Projects({ language }: ProjectsProps) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-        className="flex flex-wrap gap-2 justify-center mb-10"
+        className="flex flex-wrap gap-2 justify-center mb-6"
       >
         {filterButtons.map((btn) => (
           <button
@@ -90,112 +109,136 @@ export default function Projects({ language }: ProjectsProps) {
         ))}
       </motion.div>
 
-      {/* Scrollable Projects Container */}
-      <div className="max-h-[720px] overflow-y-auto px-3 py-4 -mx-3 -my-4 custom-scrollbar">
-        {/* Bento-like Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredProjects.map((project, index) => (
-            <motion.div
-              key={project.id}
-              onClick={() => setSelectedProject(project)}
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.5, delay: Math.min(index * 0.08, 0.4), ease: "easeOut" }}
-              className={`group bg-slate-50 dark:bg-[#0c0c0c] border p-6 rounded-xl flex flex-col justify-between hover:border-sky-500/30 dark:hover:border-white/20 hover:shadow-2xl hover:shadow-sky-500/5 hover:-translate-y-1 transition-all duration-300 cursor-pointer ${
-                project.featured
-                  ? 'md:col-span-2 lg:col-span-3 border-sky-500/20 dark:border-sky-500/30 bg-gradient-to-br from-slate-50 dark:from-[#0a0f18]/90 via-slate-50 dark:via-[#050505] to-slate-50 dark:to-[#050505]'
-                  : 'border-slate-200 dark:border-white/5'
-              }`}
-            >
-              <div>
-                <div className="flex justify-between items-start mb-4 gap-2">
-                  <div className="flex flex-wrap items-center gap-2 max-w-full">
-                    <div className="p-2 dark:p-2.5 bg-slate-200/50 dark:bg-white/5 rounded border border-slate-350 dark:border-white/10 shrink-0">
-                      {getCategoryIcon(project.category, "w-4 h-4 text-sky-600 dark:text-sky-400")}
-                    </div>
-                    {project.badge && (
-                      <span className="flex items-center gap-1 text-[9px] font-bold uppercase tracking-wider bg-sky-500/10 border border-sky-500/20 text-sky-600 dark:text-sky-400 px-2 py-0.5 rounded break-words max-w-full">
-                        <Sparkles className="w-2.5 h-2.5 text-sky-500 shrink-0" />
-                        <span>{project.badge[language]}</span>
-                      </span>
-                    )}
-                  </div>
-                  <span className="text-[10px] font-mono uppercase tracking-wider bg-slate-200/50 dark:bg-white/5 px-2.5 py-1 rounded border border-slate-200 dark:border-white/5 text-slate-500 dark:text-slate-400 shrink-0">
-                    #{getCategoryLabel(project.category)}
-                  </span>
-                </div>
+      {/* Helper cue bar */}
+      <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-3 px-1 font-mono">
+        <span className="flex items-center gap-1.5">
+          <Code className="w-3.5 h-3.5 text-sky-500" />
+          {filteredProjects.length} {language === 'en' ? 'Featured Case Studies' : 'Ausgewählte Fallstudien'}
+        </span>
+        <span className="hidden sm:inline-block text-[11px] text-slate-400 dark:text-slate-500">
+          {language === 'en' ? 'Scroll inside box or click Skip Section' : 'In der Box scrollen oder Überspringen nutzen'}
+        </span>
+      </div>
 
-                {project.featured ? (
-                  <div className="grid lg:grid-cols-12 gap-6 items-start">
-                    <div className="lg:col-span-8">
-                      <h3 className="font-bold text-slate-900 dark:text-white mb-2.5 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors duration-300 text-xl md:text-2xl break-words [overflow-wrap:anywhere]">
+      {/* Scrollable Projects Container */}
+      <div className="relative border border-slate-200 dark:border-white/10 rounded-2xl bg-slate-50/50 dark:bg-[#07090e]/50 backdrop-blur-sm p-4 md:p-6 shadow-inner">
+        <div className="max-h-[620px] overflow-y-auto px-1 py-1 custom-scrollbar">
+          {/* Bento-like Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredProjects.map((project, index) => (
+              <motion.div
+                key={project.id}
+                onClick={() => setSelectedProject(project)}
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.5, delay: Math.min(index * 0.08, 0.4), ease: "easeOut" }}
+                className={`group bg-white dark:bg-[#0c0c0c] border p-6 rounded-xl flex flex-col justify-between hover:border-sky-500/30 dark:hover:border-white/20 hover:shadow-2xl hover:shadow-sky-500/5 hover:-translate-y-1 transition-all duration-300 cursor-pointer ${
+                  project.featured
+                    ? 'md:col-span-2 lg:col-span-3 border-sky-500/20 dark:border-sky-500/30 bg-gradient-to-br from-white dark:from-[#0a0f18]/90 via-white dark:via-[#050505] to-white dark:to-[#050505]'
+                    : 'border-slate-200 dark:border-white/5'
+                }`}
+              >
+                <div>
+                  <div className="flex justify-between items-start mb-4 gap-2">
+                    <div className="flex flex-wrap items-center gap-2 max-w-full">
+                      <div className="p-2 dark:p-2.5 bg-slate-200/50 dark:bg-white/5 rounded border border-slate-350 dark:border-white/10 shrink-0">
+                        {getCategoryIcon(project.category, "w-4 h-4 text-sky-600 dark:text-sky-400")}
+                      </div>
+                      {project.badge && (
+                        <span className="flex items-center gap-1 text-[9px] font-bold uppercase tracking-wider bg-sky-500/10 border border-sky-500/20 text-sky-600 dark:text-sky-400 px-2 py-0.5 rounded break-words max-w-full">
+                          <Sparkles className="w-2.5 h-2.5 text-sky-500 shrink-0" />
+                          <span>{project.badge[language]}</span>
+                        </span>
+                      )}
+                    </div>
+                    <span className="text-[10px] font-mono uppercase tracking-wider bg-slate-200/50 dark:bg-white/5 px-2.5 py-1 rounded border border-slate-200 dark:border-white/5 text-slate-500 dark:text-slate-400 shrink-0">
+                      #{getCategoryLabel(project.category)}
+                    </span>
+                  </div>
+
+                  {project.featured ? (
+                    <div className="grid lg:grid-cols-12 gap-6 items-start">
+                      <div className="lg:col-span-8">
+                        <h3 className="font-bold text-slate-900 dark:text-white mb-2.5 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors duration-300 text-xl md:text-2xl break-words [overflow-wrap:anywhere]">
+                          {project.title[language]}
+                        </h3>
+                        <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed line-clamp-3 mb-4">
+                          {project.description[language]}
+                        </p>
+                      </div>
+                      {(project.impact || project.innovation) && (
+                        <div className="lg:col-span-4 space-y-3 bg-slate-100 dark:bg-white/[0.02] border border-slate-200 dark:border-white/5 p-4 rounded mt-2 lg:mt-0 font-sans">
+                          {project.impact && (
+                            <div>
+                              <span className="text-[9px] font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500 block mb-1">
+                                {language === 'en' ? 'Impact' : 'Auswirkung'}
+                              </span>
+                              <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed font-medium">
+                                {project.impact[language]}
+                              </p>
+                            </div>
+                          )}
+                          {project.innovation && (
+                            <div>
+                              <span className="text-[9px] font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500 block mb-1">
+                                {language === 'en' ? 'Innovation' : 'Innovation'}
+                              </span>
+                              <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                                {project.innovation[language]}
+                              </p>
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <div className="space-y-2">
+                      <h3 className="font-bold text-slate-900 dark:text-white mb-2.5 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors duration-300 text-lg">
                         {project.title[language]}
                       </h3>
                       <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed line-clamp-3 mb-4">
                         {project.description[language]}
                       </p>
                     </div>
-                    {(project.impact || project.innovation) && (
-                      <div className="lg:col-span-4 space-y-3 bg-slate-100 dark:bg-white/[0.02] border border-slate-200 dark:border-white/5 p-4 rounded mt-2 lg:mt-0 font-sans">
-                        {project.impact && (
-                          <div>
-                            <span className="text-[9px] font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500 block mb-1">
-                              {language === 'en' ? 'Impact' : 'Auswirkung'}
-                            </span>
-                            <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed font-medium">
-                              {project.impact[language]}
-                            </p>
-                          </div>
-                        )}
-                        {project.innovation && (
-                          <div>
-                            <span className="text-[9px] font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500 block mb-1">
-                              {language === 'en' ? 'Innovation' : 'Innovation'}
-                            </span>
-                            <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-                              {project.innovation[language]}
-                            </p>
-                          </div>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                ) : (
-                  <div className="space-y-2">
-                    <h3 className="font-bold text-slate-900 dark:text-white mb-2.5 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors duration-300 text-lg">
-                      {project.title[language]}
-                    </h3>
-                    <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed line-clamp-3 mb-4">
-                      {project.description[language]}
-                    </p>
-                  </div>
-                )}
-              </div>
-
-              <div className="space-y-4 pt-4 border-t border-slate-200 dark:border-white/5 mt-4">
-                <div className="flex flex-wrap gap-1.5">
-                  {project.technologies.slice(0, 4).map((tech) => (
-                    <span
-                      key={tech}
-                      className="text-[10px] font-mono px-2 py-0.5 bg-slate-200/50 dark:bg-black border border-slate-250 dark:border-white/5 text-slate-600 dark:text-slate-400 rounded"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                  {project.technologies.length > 4 && (
-                    <span className="text-[10px] font-mono px-2 py-0.5 bg-slate-200/50 dark:bg-black text-sky-600 dark:text-sky-400 font-bold rounded">
-                      +{project.technologies.length - 4}
-                    </span>
                   )}
                 </div>
-                <div className="flex items-center text-xs font-bold uppercase tracking-wider text-sky-600 dark:text-sky-400 group-hover:underline gap-1.5 cursor-pointer">
-                  <span>{language === 'en' ? 'VIEW DETAILS' : 'DETAILS ANZEIGEN'}</span>
-                  <ExternalLink className="w-3.5 h-3.5 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
+
+                <div className="space-y-4 pt-4 border-t border-slate-200 dark:border-white/5 mt-4">
+                  <div className="flex flex-wrap gap-1.5">
+                    {project.technologies.slice(0, 4).map((tech) => (
+                      <span
+                        key={tech}
+                        className="text-[10px] font-mono px-2 py-0.5 bg-slate-200/50 dark:bg-black border border-slate-250 dark:border-white/5 text-slate-600 dark:text-slate-400 rounded"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                    {project.technologies.length > 4 && (
+                      <span className="text-[10px] font-mono px-2 py-0.5 bg-slate-200/50 dark:bg-black text-sky-600 dark:text-sky-400 font-bold rounded">
+                        +{project.technologies.length - 4}
+                      </span>
+                    )}
+                  </div>
+                  <div className="flex items-center text-xs font-bold uppercase tracking-wider text-sky-600 dark:text-sky-400 group-hover:underline gap-1.5 cursor-pointer">
+                    <span>{language === 'en' ? 'VIEW DETAILS' : 'DETAILS ANZEIGEN'}</span>
+                    <ExternalLink className="w-3.5 h-3.5 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Bottom Jump Button inside container */}
+        <div className="pt-4 border-t border-slate-200/60 dark:border-white/5 mt-4 flex justify-center">
+          <button
+            onClick={handleSkipSection}
+            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 hover:text-sky-600 dark:hover:text-sky-400 transition-colors cursor-pointer"
+          >
+            <span>{language === 'en' ? 'Next Section: Certificates' : 'Nächster Abschnitt: Zertifikate'}</span>
+            <ChevronDown className="w-3.5 h-3.5 text-sky-500" />
+          </button>
         </div>
       </div>
 

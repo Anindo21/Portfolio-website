@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
-import { Award, ExternalLink, X, Loader2, CheckCircle2 } from 'lucide-react';
+import { Award, ExternalLink, X, Loader2, CheckCircle2, ChevronDown } from 'lucide-react';
 import { Language } from '../types';
 import { certificatesData } from '../data';
 
@@ -12,6 +12,13 @@ export default function Certificates({ language }: CertificatesProps) {
   const [selectedCertId, setSelectedCertId] = useState<string | null>(null);
   const [iframeLoading, setIframeLoading] = useState(true);
   const modalRef = useRef<HTMLDivElement>(null);
+
+  const handleSkipSection = () => {
+    const nextElem = document.getElementById('education');
+    if (nextElem) {
+      nextElem.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   // Helper to extract the embed url and type
   const getCertTypeAndUrl = (url: string | undefined) => {
@@ -69,93 +76,132 @@ export default function Certificates({ language }: CertificatesProps) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="mb-12"
+        className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4"
       >
-        <span className="text-[10px] uppercase tracking-[0.25em] text-sky-600 dark:text-sky-400 font-bold">
-          {language === 'en' ? '05 — CERTIFICATIONS' : '05 — ZERTIFIZIERUNGEN'}
-        </span>
-        <h2 className="font-sans text-3xl md:text-4xl font-black uppercase tracking-tight text-slate-900 dark:text-white mt-1">
-          {language === 'en' ? 'CERTIFICATES' : 'ZERTIFIKATE'}
-        </h2>
+        <div>
+          <span className="text-[10px] uppercase tracking-[0.25em] text-sky-600 dark:text-sky-400 font-bold">
+            {language === 'en' ? '05 — CERTIFICATIONS' : '05 — ZERTIFIZIERUNGEN'}
+          </span>
+          <h2 className="font-sans text-3xl md:text-4xl font-black uppercase tracking-tight text-slate-900 dark:text-white mt-1">
+            {language === 'en' ? 'CERTIFICATES' : 'ZERTIFIKATE'}
+          </h2>
+        </div>
+
+        {/* Skip Section Quick Action */}
+        <button
+          onClick={handleSkipSection}
+          className="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 hover:text-sky-600 dark:hover:text-sky-400 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg transition-all duration-300 cursor-pointer hover:border-sky-500/30 shrink-0 self-start md:self-auto"
+          title={language === 'en' ? 'Skip to Education section' : 'Zum Abschnitt Ausbildung springen'}
+        >
+          <span>{language === 'en' ? 'Skip Section' : 'Abschnitt überspringen'}</span>
+          <ChevronDown className="w-4 h-4 text-sky-500 animate-bounce" />
+        </button>
       </motion.div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {certificatesData.map((cert, index) => {
-          const { isEmbeddable } = getCertTypeAndUrl(cert.credentialUrl);
-          
-          return (
-            <motion.div
-              key={cert.id}
-              id={`cert-card-${cert.id}`}
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.5, delay: Math.min(index * 0.08, 0.4), ease: "easeOut" }}
-              className="bg-white dark:bg-[#0c0c0c] border border-slate-200 dark:border-white/5 p-6 rounded-xl hover:border-sky-500/20 dark:hover:border-white/20 hover:shadow-xl dark:hover:shadow-none transition-all duration-300 flex flex-col justify-between"
-            >
-              <div className="flex-1 flex flex-col justify-between">
-                <div>
-                  {/* Header inside card: Year on left, Ribbon icon on right */}
-                  <div className="flex justify-between items-center mb-6">
-                    <span className="text-xs font-semibold text-sky-600 dark:text-sky-400 bg-sky-500/5 dark:bg-sky-500/10 border border-sky-500/15 dark:border-sky-500/20 px-3 py-1 rounded">
-                      {cert.year}
-                    </span>
-                    <Award className="w-5 h-5 text-sky-600 dark:text-sky-400" />
-                  </div>
+      {/* Helper cue bar */}
+      <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-4 px-1 font-mono">
+        <span className="flex items-center gap-1.5">
+          <Award className="w-3.5 h-3.5 text-sky-500" />
+          {certificatesData.length} {language === 'en' ? 'Verified Credentials' : 'Verifizierte Zertifikate'}
+        </span>
+        <span className="hidden sm:inline-block text-[11px] text-slate-400 dark:text-slate-500">
+          {language === 'en' ? 'Scroll inside box to view all' : 'In der Box scrollen für alle Zertifikate'}
+        </span>
+      </div>
 
-                  {/* Title */}
-                  <h3 className="text-lg font-bold text-slate-900 dark:text-white tracking-tight leading-snug mb-1">
-                    {cert.title[language]}
-                  </h3>
+      {/* Scrollable Certificates Container */}
+      <div className="relative border border-slate-200 dark:border-white/10 rounded-2xl bg-slate-50/50 dark:bg-[#07090e]/50 backdrop-blur-sm p-4 md:p-6 shadow-inner">
+        <div className="max-h-[600px] overflow-y-auto px-1 py-1 custom-scrollbar space-y-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {certificatesData.map((cert, index) => {
+              const { isEmbeddable } = getCertTypeAndUrl(cert.credentialUrl);
+              
+              return (
+                <motion.div
+                  key={cert.id}
+                  id={`cert-card-${cert.id}`}
+                  initial={{ opacity: 0, y: 25 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.5, delay: Math.min(index * 0.08, 0.4), ease: "easeOut" }}
+                  className="bg-white dark:bg-[#0c0c0c] border border-slate-200 dark:border-white/5 p-6 rounded-xl hover:border-sky-500/20 dark:hover:border-white/20 hover:shadow-xl dark:hover:shadow-none transition-all duration-300 flex flex-col justify-between"
+                >
+                  <div className="flex-1 flex flex-col justify-between">
+                    <div>
+                      {/* Header inside card: Year on left, Ribbon icon on right */}
+                      <div className="flex justify-between items-center mb-6">
+                        <span className="text-xs font-semibold text-sky-600 dark:text-sky-400 bg-sky-500/5 dark:bg-sky-500/10 border border-sky-500/15 dark:border-sky-500/20 px-3 py-1 rounded">
+                          {cert.year}
+                        </span>
+                        <Award className="w-5 h-5 text-sky-600 dark:text-sky-400" />
+                      </div>
 
-                  {/* Issuer */}
-                  <p className="text-sm font-semibold text-sky-600 dark:text-sky-400 mb-4">
-                    {cert.issuer}
-                  </p>
+                      {/* Title */}
+                      <h3 className="text-lg font-bold text-slate-900 dark:text-white tracking-tight leading-snug mb-1">
+                        {cert.title[language]}
+                      </h3>
 
-                  {/* Separator line */}
-                  <hr className="border-slate-100 dark:border-white/5 mb-4" />
+                      {/* Issuer */}
+                      <p className="text-sm font-semibold text-sky-600 dark:text-sky-400 mb-4">
+                        {cert.issuer}
+                      </p>
 
-                  {/* Description */}
-                  <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6">
-                    {cert.description[language]}
-                  </p>
-                </div>
+                      {/* Separator line */}
+                      <hr className="border-slate-100 dark:border-white/5 mb-4" />
 
-                {/* Action Area */}
-                <div className="pt-4 border-t border-slate-100 dark:border-white/5 flex items-center justify-between mt-auto gap-2">
-                  {cert.credentialUrl ? (
-                    <>
-                      {isEmbeddable ? (
-                        <button
-                          onClick={() => setSelectedCertId(cert.id)}
-                          className="inline-flex items-center gap-1.5 text-xs font-bold text-sky-600 dark:text-sky-400 hover:text-sky-500 dark:hover:text-sky-300 transition-colors cursor-pointer group"
-                        >
-                          <span>{language === 'en' ? 'Verify Credential' : 'Zertifikat prüfen'}</span>
-                          <ExternalLink className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                        </button>
+                      {/* Description */}
+                      <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6">
+                        {cert.description[language]}
+                      </p>
+                    </div>
+
+                    {/* Action Area */}
+                    <div className="pt-4 border-t border-slate-100 dark:border-white/5 flex items-center justify-between mt-auto gap-2">
+                      {cert.credentialUrl ? (
+                        <>
+                          {isEmbeddable ? (
+                            <button
+                              onClick={() => setSelectedCertId(cert.id)}
+                              className="inline-flex items-center gap-1.5 text-xs font-bold text-sky-600 dark:text-sky-400 hover:text-sky-500 dark:hover:text-sky-300 transition-colors cursor-pointer group"
+                            >
+                              <span>{language === 'en' ? 'Verify Credential' : 'Zertifikat prüfen'}</span>
+                              <ExternalLink className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                            </button>
+                          ) : (
+                            <a
+                              href={cert.credentialUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1.5 text-xs font-bold text-sky-600 dark:text-sky-400 hover:text-sky-500 dark:hover:text-sky-300 transition-colors cursor-pointer group"
+                            >
+                              <span>{language === 'en' ? 'Verify Credential' : 'Zertifikat prüfen'}</span>
+                              <ExternalLink className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                            </a>
+                          )}
+                        </>
                       ) : (
-                        <a
-                          href={cert.credentialUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 text-xs font-bold text-sky-600 dark:text-sky-400 hover:text-sky-500 dark:hover:text-sky-300 transition-colors cursor-pointer group"
-                        >
-                          <span>{language === 'en' ? 'Verify Credential' : 'Zertifikat prüfen'}</span>
-                          <ExternalLink className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                        </a>
+                        <span className="text-[11px] font-medium text-slate-400 dark:text-slate-600 italic">
+                          {language === 'en' ? 'Verification link pending' : 'Verifizierung ausstehend'}
+                        </span>
                       )}
-                    </>
-                  ) : (
-                    <span className="text-[11px] font-medium text-slate-400 dark:text-slate-600 italic">
-                      {language === 'en' ? 'Verification link pending' : 'Verifizierung ausstehend'}
-                    </span>
-                  )}
-                </div>
-              </div>
-            </motion.div>
-          );
-        })}
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Bottom Jump Button inside container */}
+        <div className="pt-4 border-t border-slate-200/60 dark:border-white/5 mt-4 flex justify-center">
+          <button
+            onClick={handleSkipSection}
+            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 hover:text-sky-600 dark:hover:text-sky-400 transition-colors cursor-pointer"
+          >
+            <span>{language === 'en' ? 'Next Section: Education' : 'Nächster Abschnitt: Ausbildung'}</span>
+            <ChevronDown className="w-3.5 h-3.5 text-sky-500" />
+          </button>
+        </div>
       </div>
 
       {/* Direct In-App Certificate Lightbox Modal */}

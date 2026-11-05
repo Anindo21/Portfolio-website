@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1130" width="100%" height="100%">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&amp;family=Playfair+Display:ital,wght@1,600;1,700&amp;display=swap');
+      .title { font-family: 'Montserrat', sans-serif; font-weight: 800; fill: #1a2332; letter-spacing: 4px; }
+      .sub-title { font-family: 'Montserrat', sans-serif; font-weight: 600; fill: #1a2332; letter-spacing: 3px; }
+      .recipient-label { font-family: 'Montserrat', sans-serif; font-weight: 600; fill: #4a5568; letter-spacing: 2px; }
+      .name { font-family: 'Montserrat', sans-serif; font-weight: 900; fill: #1e293b; }
+      .program-label { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 600; fill: #334155; }
+      .course-name { font-family: 'Montserrat', sans-serif; font-weight: 900; fill: #00a887; }
+      .sign-title { font-family: 'Montserrat', sans-serif; font-weight: 700; fill: #1e293b; font-size: 11px; }
+      .sign-dept { font-family: 'Montserrat', sans-serif; font-weight: 600; fill: #64748b; font-size: 9px; }
+      .signature-font { font-family: 'Playfair Display', serif; font-style: italic; fill: #1e293b; font-size: 26px; }
+    </style>
+    <linearGradient id="auroraGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00b894" />
+      <stop offset="100%" stop-color="#0984e3" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="800" height="1130" fill="#ffffff"/>
+
+  <!-- Top Right Geometric Pattern -->
+  <path d="M 520 0 L 800 0 L 800 280 Z" fill="#092540" />
+  <path d="M 640 0 L 800 0 L 800 160 Z" fill="#00b894" />
+  <path d="M 720 0 L 800 0 L 800 80 Z" fill="#00cec9" />
+  <polygon points="680,20 740,20 710,70" fill="none" stroke="#00b894" stroke-width="4"/>
+
+  <!-- Left Edge Aurora Accent Bar -->
+  <rect x="0" y="0" width="16" height="1130" fill="url(#auroraGrad)"/>
+  <rect x="16" y="0" width="6" height="1130" fill="#092540" opacity="0.15"/>
+
+  <!-- Header Section -->
+  <g transform="translate(400, 150)" text-anchor="middle">
+    <!-- Aurora Logo Delta icon -->
+    <path d="M -30 20 L 0 -30 L 30 20 Z" fill="none" stroke="#00b894" stroke-width="8" stroke-linejoin="round"/>
+    <path d="M -12 20 L 0 0 L 12 20 Z" fill="#00b894"/>
+
+    <text x="0" y="55" class="title" font-size="34" letter-spacing="8">AURORA</text>
+    <text x="0" y="105" class="title" font-size="38" letter-spacing="6">CERTIFICATE</text>
+    <text x="0" y="138" class="sub-title" font-size="18" letter-spacing="4">OF PARTICIPATION</text>
+
+    <text x="0" y="200" class="recipient-label" font-size="13">THIS CERTIFICATE IS PRESENTED TO</text>
+    <text x="0" y="265" class="name" font-size="52" fill="#111827">Rezaul Hoque</text>
+
+    <text x="0" y="320" class="program-label" font-size="18">for the successful completion of the</text>
+    <text x="0" y="345" class="program-label" font-size="18">Blended Intensive Programme (BIP)</text>
+
+    <text x="0" y="410" class="course-name" font-size="32">Digital Resilience for a</text>
+    <text x="0" y="455" class="course-name" font-size="32">Vital Europe 2026</text>
+  </g>
+
+  <!-- Signatures Section Grid (4 Signatures) -->
+  <g transform="translate(80, 670)">
+    <!-- Signature 1: Prof. Dr. Hannes Rothe -->
+    <g transform="translate(120, 0)" text-anchor="middle">
+      <text x="0" y="35" class="signature-font">Hannes Rothe</text>
+      <line x1="-100" y1="45" x2="100" y2="45" stroke="#cbd5e1" stroke-width="1.5"/>
+      <text x="0" y="62" class="sign-title">Prof. Dr. Hannes Rothe</text>
+      <text x="0" y="78" class="sign-dept">CHAIR OF SUSTAINABILITY AND INNOVATION</text>
+      <text x="0" y="90" class="sign-dept">IN DIGITAL ECOSYSTEMS</text>
+      <text x="0" y="102" class="sign-dept">UNIVERSITY OF DUISBURG-ESSEN</text>
+    </g>
+
+    <!-- Signature 2: Prof. Dr. Liana Razmerita -->
+    <g transform="translate(520, 0)" text-anchor="middle">
+      <text x="0" y="35" class="signature-font">Liana Razmerita</text>
+      <line x1="-100" y1="45" x2="100" y2="45" stroke="#cbd5e1" stroke-width="1.5"/>
+      <text x="0" y="62" class="sign-title">Prof. Dr. Liana Razmerita</text>
+      <text x="0" y="78" class="sign-dept">DEPARTMENT OF MANAGEMENT, SOCIETY</text>
+      <text x="0" y="90" class="sign-dept">AND COMMUNICATION</text>
+      <text x="0" y="102" class="sign-dept">COPENHAGEN BUSINESS SCHOOL</text>
+    </g>
+
+    <!-- Signature 3: Prof. Dr. Silvia Rucinska -->
+    <g transform="translate(120, 150)" text-anchor="middle">
+      <text x="0" y="35" class="signature-font">Silvia Ručinská</text>
+      <line x1="-100" y1="45" x2="100" y2="45" stroke="#cbd5e1" stroke-width="1.5"/>
+      <text x="0" y="62" class="sign-title">Prof. Dr. Silvia Ručinská</text>
+      <text x="0" y="78" class="sign-dept">FACULTY OF PUBLIC ADMINISTRATION</text>
+      <text x="0" y="90" class="sign-dept">PAVOL JOZEF ŠAFÁRIK UNIVERSITY IN KOŠICE</text>
+    </g>
+
+    <!-- Signature 4: Dr. Misha Velthuis -->
+    <g transform="translate(520, 150)" text-anchor="middle">
+      <text x="0" y="35" class="signature-font">Misha Velthuis</text>
+      <line x1="-100" y1="45" x2="100" y2="45" stroke="#cbd5e1" stroke-width="1.5"/>
+      <text x="0" y="62" class="sign-title">Dr. Misha Velthuis</text>
+      <text x="0" y="78" class="sign-dept">AMSTERDAM UNIVERSITY COLLEGE &amp; VRIJE</text>
+      <text x="0" y="90" class="sign-dept">UNIVERSITEIT AMSTERDAM</text>
+    </g>
+  </g>
+
+  <!-- Divider Line -->
+  <line x1="80" y1="980" x2="720" y2="980" stroke="#e2e8f0" stroke-width="1.5"/>
+
+  <!-- University Partner Badges / Logos Footer -->
+  <g transform="translate(60, 1010)">
+    <!-- UDE -->
+    <g transform="translate(30, 0)">
+      <rect width="130" height="48" fill="#004b76" rx="4"/>
+      <text x="65" y="22" fill="#ffffff" font-family="'Montserrat', sans-serif" font-weight="800" font-size="11" text-anchor="middle">UNIVERSITÄT</text>
+      <text x="65" y="36" fill="#ffffff" font-family="'Montserrat', sans-serif" font-weight="800" font-size="11" text-anchor="middle">DUISBURG-ESSEN</text>
+    </g>
+
+    <!-- VU Amsterdam -->
+    <g transform="translate(185, 0)">
+      <rect width="100" height="48" fill="#00a0e3" rx="4"/>
+      <text x="50" y="30" fill="#ffffff" font-family="'Montserrat', sans-serif" font-weight="900" font-size="18" text-anchor="middle">VU</text>
+    </g>
+
+    <!-- CBS -->
+    <g transform="translate(305, 0)">
+      <rect width="90" height="48" fill="#1e3a8a" rx="4"/>
+      <text x="45" y="32" fill="#ffffff" font-family="'Montserrat', sans-serif" font-weight="900" font-size="22" text-anchor="middle">CBS</text>
+    </g>
+
+    <!-- UPJS -->
+    <g transform="translate(415, 0)">
+      <rect width="120" height="48" fill="#0f172a" rx="4"/>
+      <text x="60" y="28" fill="#ffffff" font-family="'Montserrat', sans-serif" font-weight="800" font-size="13" text-anchor="middle">UPJŠ KOŠICE</text>
+    </g>
+
+    <!-- Aurora Alliance AUC -->
+    <g transform="translate(555, 0)">
+      <rect width="120" height="48" fill="#00b894" rx="4"/>
+      <text x="60" y="28" fill="#ffffff" font-family="'Montserrat', sans-serif" font-weight="800" font-size="13" text-anchor="middle">AURORA AUC</text>
+    </g>
+  </g>
+</svg>

@@ -68,9 +68,16 @@ export default function Hero({ language }: HeroProps) {
             <span className="text-[9px] uppercase tracking-[0.25em] text-slate-400 dark:text-slate-500 font-bold">
               {language === 'en' ? 'CURRENT ROLE' : 'AKTUELLE ROLLE'}
             </span>
-            <span className="text-xs font-semibold text-slate-700 dark:text-slate-300">
-              {portfolioMetadata.currentRole[language]}
-            </span>
+            <div className="flex items-center gap-1.5 flex-wrap">
+              <span className="text-xs font-semibold text-slate-700 dark:text-slate-300">
+                {portfolioMetadata.currentRole[language]}
+              </span>
+              {portfolioMetadata.currentRoleType && (
+                <span className="text-[10px] text-slate-500 dark:text-slate-400 font-normal">
+                  • {portfolioMetadata.currentRoleType[language]}
+                </span>
+              )}
+            </div>
           </div>
 
           <div className="flex flex-col gap-1.5">
@@ -84,10 +91,10 @@ export default function Hero({ language }: HeroProps) {
         </div>
 
         {/* Action Triggers */}
-        <div className="flex flex-wrap gap-4 pt-4">
+        <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 pt-4">
           <button
             onClick={handleContactScroll}
-            className="px-6 py-3 bg-sky-600 dark:bg-white hover:bg-sky-700 dark:hover:bg-sky-400 text-white dark:text-black font-bold rounded transition-all duration-300 flex items-center gap-2 text-xs uppercase tracking-wider cursor-pointer"
+            className="w-full sm:w-auto min-h-[44px] px-6 py-3 bg-sky-600 dark:bg-white hover:bg-sky-700 dark:hover:bg-sky-400 text-white dark:text-black font-bold rounded transition-all duration-300 flex items-center justify-center gap-2 text-xs uppercase tracking-wider cursor-pointer"
           >
             <span>{language === 'en' ? 'Get in touch' : 'Kontakt aufnehmen'}</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -97,7 +104,7 @@ export default function Hero({ language }: HeroProps) {
             href={portfolioMetadata.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-6 py-3 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-white/10 text-slate-700 dark:text-slate-200 font-bold rounded flex items-center gap-2 transition duration-300 text-xs uppercase tracking-wider"
+            className="w-full sm:w-auto min-h-[44px] px-6 py-3 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-white/10 text-slate-700 dark:text-slate-200 font-bold rounded flex items-center justify-center gap-2 transition duration-300 text-xs uppercase tracking-wider"
           >
             <Github className="w-3.5 h-3.5" />
             <span>GitHub</span>
@@ -107,7 +114,7 @@ export default function Hero({ language }: HeroProps) {
             href={portfolioMetadata.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-6 py-3 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-white/10 text-slate-700 dark:text-slate-200 font-bold rounded flex items-center gap-2 transition duration-300 text-xs uppercase tracking-wider"
+            className="w-full sm:w-auto min-h-[44px] px-6 py-3 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-white/10 text-slate-700 dark:text-slate-200 font-bold rounded flex items-center justify-center gap-2 transition duration-300 text-xs uppercase tracking-wider"
           >
             <Linkedin className="w-3.5 h-3.5" />
             <span>LinkedIn</span>

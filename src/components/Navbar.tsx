@@ -179,11 +179,12 @@ export default function Navbar({ language, setLanguage, theme, toggleTheme }: Na
         </div>
 
         {/* Mobile menu trigger */}
-        <div className="flex items-center gap-3 lg:hidden">
+        <div className="flex items-center gap-2 lg:hidden">
           {/* Theme Toggle Mobile */}
           <button
             onClick={toggleTheme}
-            className="p-2 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300 rounded"
+            className="min-w-[44px] min-h-[44px] p-2.5 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300 rounded flex items-center justify-center cursor-pointer"
+            aria-label="Toggle theme"
           >
             {theme === 'dark' ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-sky-500" />}
           </button>
@@ -191,32 +192,34 @@ export default function Navbar({ language, setLanguage, theme, toggleTheme }: Na
           {/* Language Toggle Mobile */}
           <button
             onClick={() => setLanguage(language === 'en' ? 'de' : 'en')}
-            className="p-2 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300 rounded text-xs font-bold font-mono"
+            className="min-w-[44px] min-h-[44px] p-2.5 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300 rounded text-xs font-bold font-mono flex items-center justify-center cursor-pointer"
+            aria-label="Toggle language"
           >
             {language === 'en' ? 'DE' : 'EN'}
           </button>
 
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="p-2 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300 rounded"
+            className="min-w-[44px] min-h-[44px] p-2.5 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300 rounded flex items-center justify-center cursor-pointer"
+            aria-label="Toggle menu"
           >
-            {isOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+            {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
       </div>
 
       {/* Mobile Menu Dropdown */}
       {isOpen && (
-        <div className="absolute top-full left-0 w-full bg-slate-100 dark:bg-slate-950 border-b border-slate-200 dark:border-white/5 py-4 px-6 md:hidden flex flex-col gap-3 shadow-xl">
+        <div className="absolute top-full left-0 w-full bg-slate-100/98 dark:bg-slate-950/98 backdrop-blur-md border-b border-slate-200 dark:border-white/5 py-4 px-6 lg:hidden flex flex-col gap-3 shadow-2xl z-50">
           {navLinks.map((link) => {
             const isActive = activeSection === link.id;
             return (
               <button
                 key={link.id}
                 onClick={() => handleScrollTo(link.id)}
-                className={`w-full text-left py-2 text-sm font-bold uppercase tracking-wider transition-colors ${
+                className={`w-full text-left py-2.5 min-h-[44px] flex items-center text-sm font-bold uppercase tracking-wider transition-colors cursor-pointer ${
                   isActive
-                    ? 'text-sky-600 dark:text-sky-400 border-l-2 border-sky-500 pl-2'
+                    ? 'text-sky-600 dark:text-sky-400 border-l-2 border-sky-500 pl-3'
                     : 'text-slate-700 dark:text-slate-300 hover:text-sky-500'
                 }`}
               >

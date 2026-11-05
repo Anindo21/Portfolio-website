@@ -4,6 +4,7 @@ export type Theme = 'light' | 'dark';
 export interface ExperienceItem {
   id: string;
   title: { en: string; de: string };
+  employmentType?: { en: string; de: string };
   company: string;
   location: { en: string; de: string };
   period: string;

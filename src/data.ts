@@ -18,8 +18,12 @@ export const portfolioMetadata = {
     de: "Offen für Angebote in Deutschland"
   },
   currentRole: {
-    en: "Data & Automation (Working Student)",
-    de: "Daten & Automatisierung (Werkstudent)"
+    en: "Data & Automation",
+    de: "Daten & Automatisierung"
+  },
+  currentRoleType: {
+    en: "Work-Study",
+    de: "Werkstudent"
   },
   email: "anindo21@gmail.com",
   phone: "+49 17621490166",
@@ -162,8 +166,12 @@ export const experienceData: ExperienceItem[] = [
   {
     id: "uniper-data",
     title: {
-      en: "Data and Automation (Working Student)",
-      de: "Werkstudent Daten und Automatisierung"
+      en: "Data and Automation",
+      de: "Daten und Automatisierung"
+    },
+    employmentType: {
+      en: "Work-Study",
+      de: "Werkstudent"
     },
     company: "Uniper SE",
     location: {
@@ -174,27 +182,35 @@ export const experienceData: ExperienceItem[] = [
     latest: true,
     bulletPoints: {
       en: [
-        "Analyze and optimize financial reporting and operational processes to drive automation and digitalization, ensuring accurate and timely delivery of critical financial risk reports.",
-        "Design, prototype and deliver interactive Power BI dashboards and PowerApps, leveraging SQL and Python to enhance transparency and data-driven decision-making for Market Risk and Finance.",
-        "Contribute to the development of AI initiatives, including Agentic AI solutions, to further automate complex workflows.",
-        "Orchestrate and maintain automated workflows, including the execution of Python scripts and Power Automate flows.",
-        "Act as a subject matter expert for the Microsoft Power Platform, advising colleagues on best practices, troubleshooting technical issues and driving digitalization across cross-functional teams."
+        "Co-led AI and automation initiatives, contributing to the conception, development and deployment of Agentic AI solutions and multi-agent workflows using Microsoft Copilot Studio, Azure AI Services and Power Automate to enhance decision support.",
+        "Drove the identification, evaluation and implementation of Artificial Intelligence (AI) and automation use cases.",
+        "Took ownership of the design, development and maintenance of interactive Power BI dashboards for Market Risk, Finance, Margining Risk and Regulatory & Aggregated Reporting, significantly improving data transparency and reporting accuracy.",
+        "Served as a key technical sparring partner and advisor for internal stakeholders on Microsoft Power Platform tools, data analytics and modern AI technologies.",
+        "Engineered Generative AI prototypes and Proof of Concepts (PoCs) leveraging Large Language Models (LLMs) and Microsoft Fabric to optimize reporting and business operations.",
+        "Collaborated closely with business stakeholders to identify opportunities for process optimization through AI, automation, advanced analytics and digital transformation initiatives.",
+        "Analyzed existing financial, risk and operational processes to identify digitalization potential, successfully implementing automation and self-service analytics solutions."
       ],
       de: [
-        "Analysieren und Optimieren von Finanzberichterstattungs- und Betriebsprozessen, um Automatisierung und Digitalisierung voranzutreiben und eine fehlerfreie sowie pünktliche Bereitstellung kritischer Finanzrisikoberichte zu sichern.",
-        "Konzipieren, Erstellen von Prototypen und Bereitstellen interaktiver Power BI-Dashboards und PowerApps unter Nutzung von SQL und Python, um Transparenz und datengestützte Entscheidungsfindung im Risikomanagement und Finanzwesen zu stärken.",
-        "Mitwirken an KI-Initiativen, einschließlich Agentic AI-Lösungen, um komplexe betriebliche Abläufe weiter zu automatisieren.",
-        "Orchestrieren und Warten automatisierter Workflows, einschließlich der Ausführung von Python-Skripten und Power Automate-Abläufen.",
-        "Tätigkeit als Fachexperte für die Microsoft Power Platform, Beratung von Kollegen bezüglich Best Practices, Fehlerbehebung bei technischen Problemen und Förderung der Digitalisierung in funktionsübergreifenden Teams."
+        "Co-Leitung von KI- und Automatisierungsinitiativen, mitwirkung an Konzeption, Entwicklung und Deployment von Agentic-AI-Lösungen und Multi-Agent-Workflows unter Einsatz von Microsoft Copilot Studio, Azure AI Services und Power Automate zur Stärkung der Entscheidungsunterstützung.",
+        "Vorantreiben der Identifikation, Evaluierung und Implementierung von Anwendungsfällen für Künstliche Intelligenz (KI) und Prozessautomatisierung.",
+        "Eigenverantwortliche Konzeption, Entwicklung und Wartung interaktiver Power BI-Dashboards für Market Risk, Finance, Margining Risk sowie regulatorisches & aggregiertes Berichtswesen mit maßgeblicher Steigerung von Datentransparenz und Berichtsgenauigkeit.",
+        "Zentraler technischer Sparringspartner und Berater für interne Stakeholder zu Microsoft Power Platform Tools, Datenanalyse und modernen KI-Technologien.",
+        "Entwicklung von Generative-AI-Prototypen und Proof of Concepts (PoCs) auf Basis von Large Language Models (LLMs) und Microsoft Fabric zur Optimierung von Berichterstattung und Geschäftsabläufen.",
+        "Enge Zusammenarbeit mit Business-Stakeholdern zur Erschließung von Potenzialen für Prozessoptimierung durch KI, Automatisierung, Advanced Analytics und Initiativen der digitalen Transformation.",
+        "Analyse bestehender Finanz-, Risiko- und Betriebsprozesse zur Erkennung von Digitalisierungspotenzialen und erfolgreiche Umsetzung von Automatisierungs- sowie Self-Service-Analytics-Lösungen."
       ]
     },
-    technologies: ["Power BI", "Power Automate", "PowerApps", "Copilot Studio", "Agentic AI", "Python", "SQL", "Market Risk"]
+    technologies: ["Agentic AI", "Microsoft Copilot Studio", "Azure AI Services", "LLMs & GenAI", "Microsoft Fabric", "Power BI", "Power Automate", "Python", "SQL", "Market Risk"]
   },
   {
     id: "uniper-devops",
     title: {
-      en: "DevOps Engineer (Working Student)",
-      de: "Werkstudent DevOps Engineer"
+      en: "DevOps Engineer",
+      de: "DevOps Engineer"
+    },
+    employmentType: {
+      en: "Work-Study",
+      de: "Werkstudent"
     },
     company: "Uniper SE",
     location: {
@@ -1577,6 +1593,21 @@ export const educationData: EducationItem[] = [
 ];
 
 export const certificatesData: CertificateItem[] = [
+  // --- TIER 1: AI & INNOVATION LEADERSHIP ---
+  {
+    id: "cert-n8n-foundations",
+    title: {
+      en: "n8n Professional Certificate - Workflow Automation & AI Agents",
+      de: "n8n Professional Certificate - Workflow-Automatisierung & KI-Agenten"
+    },
+    issuer: "n8n Platform & n8n Academy",
+    year: "2026",
+    description: {
+      en: "Professional certification validating expertise in building multi-node automated workflows, complex API integrations, data transformations, and agentic AI pipelines on n8n.",
+      de: "Professionelle Zertifizierung zur Bestätigung von Expertise in der Erstellung von Multi-Knoten-Automatisierungs-Workflows, komplexen API-Integrationen, Datentransformationen und KI-Agenten-Pipelines auf n8n."
+    },
+    credentialUrl: "/certificates/n8n-foundations.svg"
+  },
   {
     id: "cert-copilot-studio",
     title: {
@@ -1592,32 +1623,62 @@ export const certificatesData: CertificateItem[] = [
     credentialUrl: "/certificates/Agent in a Day.pdf"
   },
   {
-    id: "cert-data-learning",
+    id: "cert-databricks-ai-agent-fundamentals",
     title: {
-      en: "Data Learning Journey Certified - Developing Level",
-      de: "Data Learning Journey Certified - Developing Level"
+      en: "AI Agent Fundamentals",
+      de: "AI Agent Fundamentals"
     },
-    issuer: "Uniper SE",
+    issuer: "Databricks",
     year: "2025",
     description: {
-      en: "Certification for advanced data analysis, dashboard reporting and business process automation within the finance and risk landscape.",
-      de: "Zertifizierung für fortgeschrittene Datenanalyse, Dashboard-Berichterstattung und Geschäftsprozessautomatisierung im Finanz- und Risikoumfeld."
+      en: "Covers the fundamental principles of building, evaluating and deploying production-quality AI agents and agentic systems using Databricks.",
+      de: "Deckt die grundlegenden Prinzipien für den Aufbau, die Evaluierung und die Bereitstellung von produktionsreifen KI-Agenten und agentischen Systemen mit Databricks ab."
     },
-    credentialUrl: "/certificates/Agent in a Day-1.pdf"
+    credentialUrl: "https://credentials.databricks.com/a96e0d67-ce09-40f0-883a-247840e91239#acc.RTUHy90G"
   },
   {
-    id: "cert-ude-quality-management",
+    id: "cert-aurora-digital-resilience",
     title: {
-      en: "Student Engagement in Quality Management",
-      de: "Studentisches Engagement im Qualitätsmanagement"
+      en: "Digital Resilience for a Vital Europe 2026",
+      de: "Digital Resilience for a Vital Europe 2026"
     },
-    issuer: "Universität Duisburg-Essen",
+    issuer: "Aurora Alliance (UDE, VU Amsterdam, CBS, UPJŠ)",
+    year: "2026",
+    description: {
+      en: "Blended Intensive Programme (BIP) exploring socio-political, technological, and legal dimensions of digital resilience across individual, business, and public sector levels.",
+      de: "Blended Intensive Programme (BIP) zu soziopolitischen, technologischen und rechtlichen Dimensionen digitaler Resilienz auf individueller, betrieblicher und institutioneller Ebene."
+    },
+    credentialUrl: "/certificates/Digital-Resilience-Vital-Europe-2026.svg"
+  },
+  {
+    id: "cert-mckinsey-forward",
+    title: {
+      en: "McKinsey Forward Program",
+      de: "McKinsey Forward-Programm"
+    },
+    issuer: "McKinsey & Company",
+    year: "2026",
+    description: {
+      en: "A selective three-stage learning journey focused on leadership, business, digital and emotional intelligence skills to thrive in future workplace environments.",
+      de: "Eine selektive, dreistufige Lernreise mit Fokus auf Führung, Business-Kompetenzen, Digitalisierung und emotionale Intelligenz für die zukünftige Arbeitswelt."
+    },
+    credentialUrl: "https://www.credly.com/badges/6067e4a8-0272-4571-ad20-661e94d7d2cc"
+  },
+
+  // --- TIER 2: PRODUCT MANAGEMENT & AGILE LEADERSHIP ---
+  {
+    id: "cert-psm-i",
+    title: {
+      en: "Professional Scrum Master I (PSM I)",
+      de: "Professional Scrum Master I (PSM I)"
+    },
+    issuer: "Scrum.org",
     year: "2025",
     description: {
-      en: "Official recognition for contributing to the continuous quality assurance of teaching units, study programs, and institutional evaluations within a system-accredited quality management framework.",
-      de: "Offizielle Bescheinigung für die Mitwirkung bei der kontinuierlichen Qualitätssicherung von Lehreinheiten, Studiengängen und institutionellen Evaluationen im Rahmen eines systemakkreditierten Qualitätsmanagementsystems."
+      en: "Validation of fundamental understanding of the Scrum framework, roles and agile product development.",
+      de: "Validierung des grundlegenden Verständnisses des Scrum-Frameworks, der Rollen und der agilen Produktentwicklung."
     },
-    credentialUrl: "/certificates/Qualitätsmanagement.pdf"
+    credentialUrl: "https://www.credly.com/badges/fc690750-25af-4073-94b3-0601c2439ec0/public_url"
   },
   {
     id: "cert-brainbirds-scrum-master",
@@ -1634,61 +1695,21 @@ export const certificatesData: CertificateItem[] = [
     credentialUrl: "/certificates/brainbirds-zertifikat-Rezaul-Hoque.pdf"
   },
   {
-    id: "cert-duesseldorf-marathon",
+    id: "cert-data-learning",
     title: {
-      en: "Düsseldorf Marathon Volunteer Certificate",
-      de: "Düsseldorf Marathon Helfer-Zertifikat"
+      en: "Data Learning Journey Certified - Developing Level",
+      de: "Data Learning Journey Certified - Developing Level"
     },
-    issuer: "Düsseldorf Marathon",
-    year: "2026",
-    description: {
-      en: "Recognition for volunteer service, logistics coordination and operational support during the Düsseldorf Marathon.",
-      de: "Anerkennung für ehrenamtlichen Einsatz, Logistikkoordination und betriebliche Unterstützung während des Düsseldorf Marathons."
-    },
-    credentialUrl: "/certificates/Agent in a Day-2.pdf"
-  },
-  {
-    id: "cert-mckinsey-forward",
-    title: {
-      en: "McKinsey Forward Program",
-      de: "McKinsey Forward-Programm"
-    },
-    issuer: "McKinsey & Company",
-    year: "2026",
-    description: {
-      en: "A selective three-stage learning journey focused on leadership, business, digital and emotional intelligence skills to thrive in future workplace environments.",
-      de: "Eine selektive, dreistufige Lernreise mit Fokus auf Führung, Business-Kompetenzen, Digitalisierung und emotionale Intelligenz für die zukünftige Arbeitswelt."
-    },
-    credentialUrl: "https://www.credly.com/badges/6067e4a8-0272-4571-ad20-661e94d7d2cc"
-  },
-  {
-    id: "cert-psm-i",
-    title: {
-      en: "Professional Scrum Master I (PSM I)",
-      de: "Professional Scrum Master I (PSM I)"
-    },
-    issuer: "Scrum.org",
+    issuer: "Uniper SE",
     year: "2025",
     description: {
-      en: "Validation of fundamental understanding of the Scrum framework, roles and agile product development.",
-      de: "Validierung des grundlegenden Verständnisses des Scrum-Frameworks, der Rollen und der agilen Produktentwicklung."
+      en: "Certification for advanced data analysis, dashboard reporting and business process automation within the finance and risk landscape.",
+      de: "Zertifizierung für fortgeschrittene Datenanalyse, Dashboard-Berichterstattung und Geschäftsprozessautomatisierung im Finanz- und Risikoumfeld."
     },
-    credentialUrl: "https://www.credly.com/badges/fc690750-25af-4073-94b3-0601c2439ec0/public_url"
+    credentialUrl: "/certificates/Agent in a Day-1.pdf"
   },
-  {
-    id: "cert-az-400",
-    title: {
-      en: "AZ-400: Enterprise DevOps Expert",
-      de: "AZ-400: Enterprise DevOps Expert"
-    },
-    issuer: "Microsoft",
-    year: "2024",
-    description: {
-      en: "Expertise in designing and implementing DevOps practices, version control, compliance, CI/CD and monitoring.",
-      de: "Expertise im Entwurf und der Implementierung von DevOps-Praktiken, Versionsverwaltung, Compliance, CI/CD und Monitoring."
-    },
-    credentialUrl: "/certificates/AZ-400.pdf"
-  },
+
+  // --- TIER 3: TECHNICAL ARCHITECTURE & DATA PLATFORM ---
   {
     id: "cert-az-305",
     title: {
@@ -1704,18 +1725,18 @@ export const certificatesData: CertificateItem[] = [
     credentialUrl: "/certificates/AZ-305.pdf"
   },
   {
-    id: "cert-databricks-ai-agent-fundamentals",
+    id: "cert-az-400",
     title: {
-      en: "AI Agent Fundamentals",
-      de: "AI Agent Fundamentals"
+      en: "AZ-400: Enterprise DevOps Expert",
+      de: "AZ-400: Enterprise DevOps Expert"
     },
-    issuer: "Databricks",
-    year: "2025",
+    issuer: "Microsoft",
+    year: "2024",
     description: {
-      en: "Covers the fundamental principles of building, evaluating and deploying production-quality AI agents and agentic systems using Databricks.",
-      de: "Deckt die grundlegenden Prinzipien für den Aufbau, die Evaluierung und die Bereitstellung von produktionsreifen KI-Agenten und agentischen Systemen mit Databricks ab."
+      en: "Expertise in designing and implementing DevOps practices, version control, compliance, CI/CD and monitoring.",
+      de: "Expertise im Entwurf und der Implementierung von DevOps-Praktiken, Versionsverwaltung, Compliance, CI/CD und Monitoring."
     },
-    credentialUrl: "https://credentials.databricks.com/a96e0d67-ce09-40f0-883a-247840e91239#acc.RTUHy90G"
+    credentialUrl: "/certificates/AZ-400.pdf"
   },
   {
     id: "cert-databricks-fundamentals",
@@ -1745,6 +1766,22 @@ export const certificatesData: CertificateItem[] = [
     },
     credentialUrl: "https://www.linkedin.com/learning/certificates/e7fae9c6cd94accb8aa36d06014b318c5ed5f77c5a63d642947e7a4c5e177bf9?u=80731522"
   },
+
+  // --- TIER 4: QUALITY MANAGEMENT & FOUNDATIONS ---
+  {
+    id: "cert-ude-quality-management",
+    title: {
+      en: "Student Engagement in Quality Management",
+      de: "Studentisches Engagement im Qualitätsmanagement"
+    },
+    issuer: "Universität Duisburg-Essen",
+    year: "2025",
+    description: {
+      en: "Official recognition for contributing to the continuous quality assurance of teaching units, study programs, and institutional evaluations within a system-accredited quality management framework.",
+      de: "Offizielle Bescheinigung für die Mitwirkung bei der kontinuierlichen Qualitätssicherung von Lehreinheiten, Studiengängen und institutionellen Evaluationen im Rahmen eines systemakkreditierten Qualitätsmanagementsystems."
+    },
+    credentialUrl: "/certificates/Qualitätsmanagement.pdf"
+  },
   {
     id: "cert-az-900-prep",
     title: {
@@ -1758,6 +1795,20 @@ export const certificatesData: CertificateItem[] = [
       de: "Umfassende Vorbereitung auf grundlegende Cloud-Konzepte, Azure-Architektur und -Dienste sowie Azure-Management und -Governance."
     },
     credentialUrl: "/certificates/Microsoft Azure Fundamentals AZ900 Cert Prep by Microsoft Press.pdf"
+  },
+  {
+    id: "cert-duesseldorf-marathon",
+    title: {
+      en: "Düsseldorf Marathon Volunteer Certificate",
+      de: "Düsseldorf Marathon Helfer-Zertifikat"
+    },
+    issuer: "Düsseldorf Marathon",
+    year: "2026",
+    description: {
+      en: "Recognition for volunteer service, logistics coordination and operational support during the Düsseldorf Marathon.",
+      de: "Anerkennung für ehrenamtlichen Einsatz, Logistikkoordination und betriebliche Unterstützung während des Düsseldorf Marathons."
+    },
+    credentialUrl: "/certificates/Agent in a Day-2.pdf"
   }
 ];
 

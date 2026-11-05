@@ -78,6 +78,11 @@ export default function Experience({ language }: ExperienceProps) {
                         <h3 className="text-lg md:text-xl font-bold text-slate-900 dark:text-white tracking-tight">
                           {item.title[language]}
                         </h3>
+                        {item.employmentType && (
+                          <span className="text-[10px] md:text-[11px] font-medium tracking-wide text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-white/[0.04] border border-slate-200 dark:border-white/10 px-2 py-0.5 rounded">
+                            {item.employmentType[language]}
+                          </span>
+                        )}
                         {item.latest && (
                           <span className="flex items-center gap-1 text-[9px] font-bold uppercase tracking-wider bg-sky-500/10 border border-sky-500/20 text-sky-600 dark:text-sky-400 px-2 py-0.5 rounded">
                             <Sparkles className="w-2.5 h-2.5" /> {language === 'en' ? 'Latest' : 'Aktuell'}
