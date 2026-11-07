@@ -1,0 +1,48 @@
+# Builds the site and deploys it to Firebase Hosting on every push to main.
+# Pushes from Google AI Studio's GitHub sync trigger this too.
+name: Deploy to Firebase Hosting
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: # allows a manual run from the Actions tab
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+      - run: npm run build
+
+      # AI Studio sync can delete firebase.json / .firebaserc from the repo.
+      # Recreate them here so the deploy never breaks because of that.
+      - name: Ensure Firebase config exists
+        run: |
+          if [ ! -f firebase.json ]; then
+            cat > firebase.json <<'JSON'
+          {
+            "hosting": {
+              "public": "dist",
+              "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+              "rewrites": [{ "source": "**", "destination": "/index.html" }]
+            }
+          }
+          JSON
+          fi
+          if [ ! -f .firebaserc ]; then
+            echo '{ "projects": { "default": "rezaul-hoque" } }' > .firebaserc
+          fi
+
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          projectId: rezaul-hoque
+          channelId: live
