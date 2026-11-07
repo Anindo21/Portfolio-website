@@ -1465,6 +1465,70 @@ export const projectsData: ProjectItem[] = [
       ]
     }
   },
+  // diag_lm: Advanced R for Econometricians (University of Duisburg-Essen, SS 2026)
+  {
+    id: "diag-lm-r-framework",
+    title: {
+      en: "diag_lm: Automated Regression Diagnostics Framework & Shiny Dashboard",
+      de: "diag_lm: Automatisiertes Regressionsdiagnose-Framework & Shiny-Dashboard"
+    },
+    description: {
+      en: "Built an R S3 framework and interactive Shiny app that fits OLS, logistic, time-series or panel models, automatically runs the matching diagnostic tests and returns PASS/CHECK verdicts, diagnostic plots, remediation advice and an optional plain-language LLM interpretation. Team project (3 members), University of Duisburg-Essen.",
+      de: "Entwicklung eines R-S3-Frameworks und einer interaktiven Shiny-App, die OLS-, Logit-, Zeitreihen- oder Panelmodelle schätzt, automatisch die passenden Diagnosetests ausführt und PASS/CHECK-Urteile, Diagnoseplots, Handlungsempfehlungen sowie eine optionale, verständliche LLM-Interpretation liefert. Teamprojekt (3 Personen), Universität Duisburg-Essen."
+    },
+    impact: {
+      en: "Simulation study: every test flagged exactly the violation it targets (Breusch-Pagan p < 0.0001 under heteroskedasticity, VIF 15.68 for multicollinearity, Hausman p = 0.0001 selecting FE over RE). Wage case study (N = 8,328) detected heteroskedasticity and a 14% gender wage gap. QA audit fixed 8 defects, guarded by 9 automated server tests.",
+      de: "Simulationsstudie: Jeder Test erkannte genau die Verletzung, für die er gedacht ist (Breusch-Pagan p < 0,0001 bei Heteroskedastizität, VIF 15,68 bei Multikollinearität, Hausman p = 0,0001 für FE statt RE). Lohn-Fallstudie (N = 8.328) erkannte Heteroskedastizität und einen Gender-Pay-Gap von 14 %. QA-Audit behob 8 Fehler, abgesichert durch 9 automatisierte Server-Tests."
+    },
+    innovation: {
+      en: "One S3 abstraction across 4 model families, including a 4-stage plm panel pipeline (LM → Hausman → serial correlation → two-way effects), data simulators with switchable assumption violations, and a privacy-aware opt-in LLM layer (ellmer/Groq) that sends only computed statistics, never raw data.",
+      de: "Eine S3-Abstraktion für 4 Modellfamilien, inklusive 4-stufiger plm-Panel-Pipeline (LM → Hausman → serielle Korrelation → Two-Way-Effekte), Datensimulatoren mit schaltbaren Annahmeverletzungen und eine datenschutzbewusste, optionale LLM-Schicht (ellmer/Groq), die nur berechnete Statistiken und niemals Rohdaten sendet."
+    },
+    category: "ai",
+    badge: {
+      en: "R S3 Framework + Shiny App",
+      de: "R-S3-Framework + Shiny-App"
+    },
+    technologies: ["R", "Shiny", "Econometrics", "lmtest", "plm", "ggplot2", "LLM (ellmer)", "Shiny testServer"],
+    featured: true,
+    link: "https://github.com/Anindo21/AdcancedR",
+    linkLabel: {
+      en: "View on GitHub",
+      de: "Auf GitHub ansehen"
+    }
+  },
+  // Ames Housing: Statistical Learning (University of Duisburg-Essen, SS 2026)
+  {
+    id: "ames-housing-ml",
+    title: {
+      en: "Ames Housing: Predicting Construction Year & Architectural Style with ML",
+      de: "Ames Housing: Vorhersage von Baujahr & Architekturstil mit ML"
+    },
+    description: {
+      en: "Machine learning study on 2,930 homes in Ames, Iowa, predicting a house's construction year (regression) and its 4-class architectural style (classification) from materials, layout and geometry alone. Benchmarked 9 regressors and 8 classifiers in leakage-safe scikit-learn pipelines. Group project (2 members), University of Duisburg-Essen.",
+      de: "Machine-Learning-Studie zu 2.930 Häusern in Ames, Iowa, die das Baujahr (Regression) und den Architekturstil in 4 Klassen (Klassifikation) allein aus Materialien, Grundriss und Geometrie vorhersagt. Vergleich von 9 Regressions- und 8 Klassifikationsmodellen in leakage-sicheren scikit-learn-Pipelines. Gruppenprojekt (2 Personen), Universität Duisburg-Essen."
+    },
+    impact: {
+      en: "Tuned XGBoost achieved RMSE 8.40 years and R² 0.920 for construction year, and 91.8% accuracy with macro F1 0.837 for house style on a 586-house held-out test set. Basement quality (≈40–55% importance) and second-floor area (≈31–33%) emerged as the strongest predictors.",
+      de: "Getuntes XGBoost erreichte RMSE 8,40 Jahre und R² 0,920 für das Baujahr sowie 91,8 % Accuracy mit Macro-F1 0,837 für den Hausstil auf einem Hold-out-Testset von 586 Häusern. Kellerqualität (≈40–55 % Wichtigkeit) und Obergeschossfläche (≈31–33 %) waren die stärksten Prädiktoren."
+    },
+    innovation: {
+      en: "Leakage-aware feature selection (dropping target-encoding fields such as garage year and MS SubClass), a ColumnTransformer fitted on training data only with Yeo-Johnson transforms, stratified 5-fold CV with macro F1 for class imbalance, and Randomized/Grid Search hyperparameter tuning.",
+      de: "Leakage-bewusste Feature-Auswahl (Entfernen zielverratender Felder wie Garagenbaujahr und MS SubClass), ein nur auf Trainingsdaten gefitteter ColumnTransformer mit Yeo-Johnson-Transformation, stratifizierte 5-fache CV mit Macro-F1 für unausgewogene Klassen sowie Hyperparameter-Tuning per Randomized/Grid Search."
+    },
+    category: "ai",
+    badge: {
+      en: "Regression & Classification Study",
+      de: "Regressions- & Klassifikationsstudie"
+    },
+    technologies: ["Python", "Scikit-Learn", "XGBoost", "Pandas", "Gradient Boosting", "Random Forest", "Feature Engineering", "Cross-Validation"],
+    featured: true,
+    link: "https://github.com/Anindo21/ames-housing-analysis",
+    linkLabel: {
+      en: "View on GitHub",
+      de: "Auf GitHub ansehen"
+    }
+  },
   // Web Application (Rezaul's Project)
   {
     id: "web-app-testing",

@@ -550,7 +550,7 @@ export default function Projects({ language }: ProjectsProps) {
                       rel="noopener noreferrer"
                       className="px-6 py-2.5 bg-sky-600 hover:bg-sky-500 text-white font-bold rounded-lg text-xs uppercase tracking-wider transition duration-200 cursor-pointer border border-sky-600 flex items-center justify-center gap-1.5"
                     >
-                      <span>{language === 'en' ? 'View Kaggle Writeup' : 'Kaggle Writeup ansehen'}</span>
+                      <span>{selectedProject.linkLabel?.[language] ?? (language === 'en' ? 'View Kaggle Writeup' : 'Kaggle Writeup ansehen')}</span>
                       <ExternalLink className="w-3.5 h-3.5" />
                     </a>
                   )}
@@ -640,7 +640,7 @@ export default function Projects({ language }: ProjectsProps) {
                       rel="noopener noreferrer"
                       className="px-6 py-2.5 bg-sky-600 hover:bg-sky-500 text-white font-bold rounded-lg text-xs uppercase tracking-wider transition duration-200 cursor-pointer border border-sky-600 flex items-center justify-center gap-1.5"
                     >
-                      <span>{language === 'en' ? 'View Kaggle Writeup' : 'Kaggle Writeup ansehen'}</span>
+                      <span>{selectedProject.linkLabel?.[language] ?? (language === 'en' ? 'View Kaggle Writeup' : 'Kaggle Writeup ansehen')}</span>
                       <ExternalLink className="w-3.5 h-3.5" />
                     </a>
                   )}

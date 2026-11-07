@@ -23,6 +23,10 @@ export interface ProjectItem {
   technologies: string[];
   featured?: boolean;
   link?: string;
+  linkLabel?: {
+    en: string;
+    de: string;
+  };
   badge?: {
     en: string;
     de: string;

@@ -211,11 +211,15 @@ Expertise in der Bereitstellung von KI-Agenten, automatisierten Pipelines und Cl
         ? `KEY PORTFOLIO PROJECTS:
   1. ProcureFlow AI  :: Multi-Agent AI system automating public tenders. (Won Google Hackathon)
   2. LLM Evaluation  :: Benchmarking suite evaluating prompt reliability and accuracy.
-  3. Portfolio Shell :: Live sandboxed interactive developer portlet (This CLI tool!)`
+  3. diag_lm         :: R/Shiny framework automating regression diagnostics with LLM explanations.
+  4. Ames Housing    :: XGBoost predicts build year (R² 0.92) & house style (91.8% acc).
+  5. Portfolio Shell :: Live sandboxed interactive developer portlet (This CLI tool!)`
         : `PORTFOLIO-HAUPTPROJEKTE:
   1. ProcureFlow AI  :: Multi-Agenten-KI-System zur Automatisierung öffentlicher Ausschreibungen.
   2. LLM Evaluation  :: Benchmarking-Suite zur Bewertung von Prompt-Zuverlässigkeit.
-  3. Portfolio Shell :: Interaktive Entwicklerkonsole (Dieses CLI-Tool!)`;
+  3. diag_lm         :: R/Shiny-Framework für automatisierte Regressionsdiagnostik mit LLM-Erklärungen.
+  4. Ames Housing    :: XGBoost sagt Baujahr (R² 0,92) & Hausstil (91,8 % Acc.) vorher.
+  5. Portfolio Shell :: Interaktive Entwicklerkonsole (Dieses CLI-Tool!)`;
       replyType = 'info';
     } else if (formattedCmd === 'contact' || formattedCmd === 'kontakt') {
       replyText = `CONTACT DETAILS:
